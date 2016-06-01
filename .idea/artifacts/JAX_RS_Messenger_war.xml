@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="JAX-RS_Messenger:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="messenger.war">
-      <element id="artifact" artifact-name="JAX-RS_Messenger:war exploded" />
-    </root>
-  </artifact>
-</component>
