@@ -1,6 +1,8 @@
 package pl.raziel.jaxrs.model;
 
-//@XmlRootElement
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class ErrorMessage {
 
 	private String errorMessage;
