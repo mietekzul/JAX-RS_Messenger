@@ -4,8 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 import pl.raziel.jaxrs.database.DatabaseClass;
 import pl.raziel.jaxrs.model.Comment;
+import pl.raziel.jaxrs.model.ErrorMessage;
 import pl.raziel.jaxrs.model.Message;
 
 public class CommentService {
@@ -18,7 +25,20 @@ public class CommentService {
 	}
 
 	public Comment getComment(long messageId, long commentId) {
+		ErrorMessage errorMessage = new ErrorMessage("Not found", 404, "http://hatak.pl");
+		Response response = Response.status(Status.NOT_FOUND)
+				.entity(errorMessage)
+				.type(MediaType.APPLICATION_JSON)
+				.build();
+		Message message = messages.get(messageId);
+		if (message == null) {
+			throw new WebApplicationException(response);
+		}
 		Map<Long, Comment> comments = messages.get(messageId).getComments();
+		Comment comment = comments.get(commentId);
+		if (comment == null) {
+			throw new NotFoundException(response);
+		}
 		return comments.get(commentId);
 	}
 

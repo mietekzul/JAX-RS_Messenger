@@ -8,7 +8,7 @@ import javax.ws.rs.ext.Provider;
 
 import pl.raziel.jaxrs.model.ErrorMessage;
 
-@Provider
+//@Provider
 public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
 
 	@Override

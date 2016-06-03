@@ -16,8 +16,8 @@ import pl.raziel.jaxrs.model.Comment;
 import pl.raziel.jaxrs.service.CommentService;
 
 @Path("/")
-@Produces(MediaType.TEXT_PLAIN)
-@Consumes(MediaType.TEXT_PLAIN)
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class CommentResource {
 
 	private CommentService commentService = new CommentService();
